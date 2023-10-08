@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+    <html lang="HR">
+        <head>
+            <meta charset="UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <title>Ponuda</title>           
+            <link rel="stylesheet" href="style.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha512-L7MWcK7FNPcwNqnLdZq86lTHYLdQqZaz5YcAgE+5cnGmlw8JT03QB2+oxL100UeB6RlzZLUxCGSS4/++mNZdxw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600;700;800&family=Josefin+Slab:ital,wght@0,300;0,400;0,500;1,200;1,300;1,400;1,500&family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
+            <style>
+                .color-container {
+                    display: flex; /* Use flexbox for a horizontal layout */
+                    flex-wrap: wrap; /* Allow items to wrap to the next row */
+                    justify-content: center; /* Center items horizontally */
+                }
+
+                /* Style the color blocks */
+                .color-block {
+                    width: 600px;
+                    height: 300px;
+                    margin: 10px;
+                    border: 2px solid #333;
+                    border-radius: 10px;
+                    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+                }
+
+                /* Style the color names */
+                p {
+                    margin: 5px 0;
+                    color: #333;
+                    font-weight: bold;
+                    font-size: 20px;
+                    text-align: center;
+                }
+            </style>
+        <head>           
+        <body>
+            <div class="spinner-container">
+                <div class="circles">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <div class="container" id="pocetna">
+                <div class="hamburger-menu">
+                    <div class="line line-1"></div>
+                    <div class="line line-2"></div>
+                    <div class="line line-3"></div>
+                    <span>Close</span>
+                </div>
+                <header class="header">
+                    <div class="img-wrapper">
+                        <img src="images/kontaktpodaci.jpg"/>
+                    </div>
+                    <div class="banner">
+                        <h1>Predstavljamo Vam katalog osnovnih boja u našoj ponudi!</h1>
+                        
+                    </div>
+                </header>
+                <section class="sidebar">
+                    <ul class="menu">
+                        <input style="margin-left:4.5rem;" type="submit" class="submit-btn" value="Povratak" name="natrag" onclick="back()">
+                    </ul>
+                    <div class="social-media">
+                        <a href="https://hr-hr.facebook.com/" target="blank"> <i class=" fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/" target="blank"> <i class=" fab fa-instagram"></i></a>
+                        <a href="https://twitter.com/" target="blank"> <i class=" fab fa-twitter"></i></a>
+                    </div>
+                </section>
+                <section class="team"id="adresa">
+                <div class="section-header">
+                    <h1 class="section-heading">PONUDA</h1>
+                    </div>
+                    <div class="color-container"></div>
+                        <div id="colorData">
+                            <!-- Data will be displayed here -->
+                        </div>
+                    <div class="underline"></div>
+                </div>
+  
+                </section>
+                
+                <footer class="footer">
+                    <div class="footer-content">
+                        <p class="copyright">
+                            Copyright &copy; 2023, Soboslikarsko obrt - Sva prava pridržana
+                        </p>
+                        <div class="social-list">
+                            <a href="https://hr-hr.facebook.com/" target="blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/" target="blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://twitter.com/" target="blank"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+            </footer>        
+            <a href="#" class="scroll-btn">
+                <i class="fas fa-arrow-up"></i>
+            </a>
+            </div>
+            <script src="script.js"></script>
+            <script>
+                // Fetch JSON data from the URL
+                fetch('https://dune-rare-nova.glitch.me/colors')
+                    .then(response => response.json())
+                    .then(data => {
+                   
+                        const colors = data.color;
+        
+                        
+                        const colorData = document.getElementById('colorData');
+        
+                        colors.forEach(color => {
+                            const colorBlock = document.createElement('div');
+                            colorBlock.className = 'color-block';
+                            colorBlock.style.backgroundColor = `rgb(${color.r}, ${color.g}, ${color.b})`;
+        
+                            const colorName = document.createElement('p');
+                            colorName.textContent = color.name;
+        
+                           
+                            colorData.appendChild(colorBlock);
+                            colorData.appendChild(colorName);
+                        });
+                    })
+                    .catch(error => console.error('Error fetching data:', error));
+                    
+                    function back() {
+                        window.location.href = 'index.php';
+                    }
+            </script>
+        </body>
+    </html>
